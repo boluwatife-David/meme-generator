@@ -1,17 +1,24 @@
 import React from "react";
-import memeData from "./memeData";
 export default function Body () {
+
     const [meme, setMeme] = React.useState({
         topText:"",
         bottomText:"",
         randomImage:"/BART.jpg"
     })
-    const [allMemeImage, setAllMemeImage] = React.useState(memeData)
-    
+    const [allMemes, setAllMeme] = React.useState([])
+
+    React.useEffect(() => {
+        fetch("https://api.imgflip.com/get_memes")
+        .then(res => res.json())
+        .then(data => setAllMeme(data.data.memes))
+    }, [])
+
+
+
     function generateBtn () {
-        const memeArray = allMemeImage.data.memes
-        const randomMeme = Math.floor(Math.random() * memeArray.length);
-        const url = memeArray[randomMeme].url
+        const randomMeme = Math.floor(Math.random() * allMemes.length);
+        const url = allMemes[randomMeme].url
         setMeme(prevMeme => ({
             ...prevMeme,
             randomImage: url
@@ -23,10 +30,10 @@ export default function Body () {
         const {name, value} = event.target
         setMeme(prevMeme => ({
             ...prevMeme,
-            [name] : value 
+            [name] : value  
         }))
         
-    }
+    } 
 
     return (
     <div className="main">
