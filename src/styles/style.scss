@@ -39,6 +39,7 @@ body{
         gap: 15px;
         display: grid;
         grid-template-columns: 50% 50% ;
+        margin-bottom: 20px;
     }
 }
 
@@ -57,6 +58,17 @@ body{
     grid-column: 1/-1;
     height:50px;
     width: 100%;
+    color: white;
+    text-align: center;
+    border: none;
+    background-image: linear-gradient( to right,rgb(92, 77, 106),rgb(53, 31, 104));
+    border-radius: 5px ;
+    box-shadow: 3px 6px 10px rgba(0,0,0,.5);
+}
+.add-textbtn {
+    grid-column: 1/-1;
+    height: 50px;
+    width: 100%;
     cursor: pointer;
     color: white;
     text-align: center;
@@ -68,8 +80,22 @@ body{
 
 /*IMAGE*/
 .meme-section{
-    margin-left: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
 
+}
+.meme-top-text {
+    position: absolute;
+    top: 0;
+    color: aliceblue;
+}
+
+.meme-bottom-text {
+    position: absolute;
+    bottom: 0;
+    color: aliceblue;
 }
 .meme-image{
     height: 250px;
